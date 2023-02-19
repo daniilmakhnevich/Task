@@ -7,13 +7,13 @@ switch ($_POST['func']) {
 
 function addUser(){
     $user=setUser();
-    if(!findUserByLogin($user['login'])){
+    if($_POST['flag'] == '111111111111111'){ //!findUserByLogin($user['login'])
         $user['password'] = cryptPassword($user['password']);
-        $data=file_get_contents('../json/jsondb.json');;
+        $data=file_get_contents('../../json/Jsondb.json');
         $data=json_decode($data, true);
         array_push($data, $user);
         $json = json_encode($data);
-        file_put_contents('../../json/jsondb.json', $json);
+        file_put_contents('../../json/Jsondb.json', $json);
         echo 'Регистрация прошла успешно';
     }
 }
@@ -33,7 +33,7 @@ function cryptPassword($password){
 }
 
 function findUserByLogin($login){
-    $data=file_get_contents('../../json/jsondb.json');;
+    $data=file_get_contents('../../json/Jsondb.json');;
     $data=json_decode($data, true);
     foreach($data as $usr){
         if(strcmp($usr['login'], $login) == 0){
@@ -43,7 +43,7 @@ function findUserByLogin($login){
 }
 
 function findUserByEmail($email){
-    $data=file_get_contents('../../json/jsondb.json');;
+    $data=file_get_contents('../../json/Jsondb.json');;
     $data=json_decode($data, true);
     foreach($data as $usr){
         if(strcmp($usr['email'], $email) == 0){

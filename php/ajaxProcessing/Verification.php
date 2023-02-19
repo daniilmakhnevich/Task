@@ -26,6 +26,9 @@ function checkLogin(){
     if(strlen($login)<6) {
         echo 'Логин должен содержать как минимум 6 символов';
     }
+    elseif(!preg_match("#^[aA-zZ0-9]+$#",$login)){
+        echo 'Логин должен состоять из букв и цифр';
+    }
     elseif(findUserByLogin($login)){
         echo 'Этот логин уже занят, придумайте новый';
     }
@@ -53,7 +56,7 @@ function checkEmail(){
     $email = $_POST['email'];
     $data=file_get_contents('../../json/Jsondb.json');
     $data=json_decode($data, true);
-    if (!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $email)) {
+    if (!preg_match("/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i", $email) && !preg_match("#^[aA-zZ0-9]+$#", $email)) {
         echo "Неверно указан адрес электронной почты";
     }
     elseif(findUserByEmail($email)){
@@ -65,6 +68,9 @@ function checkName(){
     $name = $_POST['name'];
     if(strlen($name)<2) {
         echo 'Имя должно содержать как минимум 2 символа';
+    }
+    elseif(!preg_match("#^[aA-zZаА-яЯ0-9]+$#",$name)){
+
     }
 }
 ?>

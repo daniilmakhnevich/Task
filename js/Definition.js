@@ -6,9 +6,21 @@ function check(login, password){
         data: {func:'check', login:login, password:password},
         success: function(data){
             if(data.length==0){
-                window.location.href = 'HousePage.php';
+                window.location.href = 'Authorization.php';
             }
             else alert(data);
+        }
+    });
+}
+
+function logout(){
+    $.ajax({
+        url: '../php/ajaxProcessing/Definition.php',
+        method: 'POST',
+        dataType: 'html',
+        data: {func:'logout'},
+        success: function(data){
+            window.location.href = 'Authorization.php';
         }
     });
 }

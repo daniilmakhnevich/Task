@@ -6,6 +6,11 @@ function checkLogin(login){
         data: {func:'checkLogin', login:login},
         success: function(data){
             document.getElementById("loginSignal").innerHTML = data;
+            if(data.length == 0){
+                document.getElementById("flag").value += '1';
+                checkPassword(document.getElementById('password').value)
+            }
+            else document.getElementById("flag").value = '0';
         }
     });
 }
@@ -18,6 +23,11 @@ function checkPassword(password){
         data: {func:'checkPassword',password:password},
         success: function(data){
             document.getElementById("passwordSignal").innerHTML = data;
+            if(data.length == 0){
+                document.getElementById("flag").value += '1';
+                checkConfirm_password(document.getElementById('password').value, document.getElementById('confirm_password').value)
+            }
+            else document.getElementById("flag").value = '0';
         }
     });
 }
@@ -30,6 +40,11 @@ function checkConfirm_password(password, confirm_password){
         data: {func:'checkConfirm_password', password:password, confirm_password:confirm_password},
         success: function(data){
             document.getElementById("confirm_passwordSignal").innerHTML = data;
+            if(data.length == 0){
+                document.getElementById("flag").value += '1';
+                checkEmail(document.getElementById('email').value)
+            }
+            else document.getElementById("flag").value = '0';
         }
     });
 }
@@ -42,6 +57,11 @@ function checkEmail(email){
         data: {func:'checkEmail', email:email},
         success: function(data){
             document.getElementById("emailSignal").innerHTML = data;
+            if(data.length == 0){
+                document.getElementById("flag").value += '1';
+                checkName(document.getElementById('name').value)
+            }
+            else document.getElementById("flag").value = '0';
         }
     });
 }
@@ -54,16 +74,21 @@ function checkName(name){
         data: {func:'checkName', name:name},
         success: function(data){
             document.getElementById("nameSignal").innerHTML = data;
+            if(data.length == 0){
+                document.getElementById("flag").value += '1';
+                addUser(document.getElementById('login').value, document.getElementById('password').value, document.getElementById('email').value, document.getElementById('name').value, document.getElementById('flag').value);
+            }
+            else document.getElementById("flag").value = '0';
         }
     });
 } 
 
-function addUser(login, password, email, name){
+function addUser(login, password, email, name, flag){
     $.ajax({
         url: '../php/ajaxProcessing/CRUD.php',
         method: 'POST',
         dataType: 'html',
-        data: {func:'addUser', login:login, password:password, email:email, name:name},
+        data: {func:'addUser', login:login, password:password, email:email, name:name, flag:flag},
         success: function(data){
             if(data.length>0){
                 alert(data);
@@ -74,11 +99,10 @@ function addUser(login, password, email, name){
 }
 
 function verify(){
+    document.getElementById("flag").value = '';
     checkLogin(document.getElementById('login').value)
     checkPassword(document.getElementById('password').value)
     checkConfirm_password(document.getElementById('password').value, document.getElementById('confirm_password').value)
     checkEmail(document.getElementById('email').value)
     checkName(document.getElementById('name').value)
-    addUser(document.getElementById('login').value, document.getElementById('password').value, document.getElementById('email').value, document.getElementById('name').value);
-    
 }

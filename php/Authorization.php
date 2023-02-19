@@ -8,13 +8,25 @@
     <title>Document</title>
 </head>
 <body>
+<?php 
+session_start();
+if(isset($_SESSION['login'])):
+?>
+<form id="helloform">
+    <h1><?php echo 'Hello, ' . $_SESSION['login'] . '!';?></h1>
+    <p><input type="button" name="submit" value="Выход" onclick="logout()"></input></p>
+    <script src="../js/Definition.js?ver=1.0.5"></script>
+</form>
+<? endif ?>
+<?php if(!isset($_SESSION['login'])): ?>
 <form id="loginform" method="post">
     <h1>Вход</h1>
     <p>Логин <input type="login" name="login" id="login" value="Vova337"></p>
     <p>Пароль <input type="password" name="password" id="password" value="abcd1234"></p>
     <p><input type="button" name="submit" onclick="define()" value="Войти"></input]></p>
     <p><input type="button" name="submit" value="Зарегистрироваться" onclick="window.location.href = 'Registration.php'"></input></p>
-    <script src="../js/Definition.js?ver=1.0.1"></script>
+    <script src="../js/Definition.js?ver=1.0.5"></script>
 </form>
+<? endif ?>
 </body>
 </html>
