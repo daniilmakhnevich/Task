@@ -69,8 +69,8 @@ function checkName(){
     if(strlen($name)<2) {
         echo json_encode('Имя должно содержать как минимум 2 символа');
     }
-    elseif(!preg_match("#^[aA-zZаА-яЯ0-9]+$#",$name)){
-        echo json_encode('Имя должно состоять только из букв латиницы или кириллицы');
+    elseif(!preg_match("#^[aA-zZ]+$#",$name)){
+        echo json_encode('Имя должно состоять только из букв латиницы');
     }
 }
 ?>
