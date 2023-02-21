@@ -8,7 +8,7 @@ function check(login, password){
             if(data.length==0){
                 window.location.href = 'Authorization.php';
             }
-            else alert(data);
+            else alert(JSON.parse(data));
         }
     });
 }
@@ -20,7 +20,7 @@ function logout(){
         dataType: 'html',
         data: {func:'logout'},
         success: function(data){
-            window.location.href = 'Authorization.php';
+            //window.location.href = 'Authorization.php';
         }
     });
 }

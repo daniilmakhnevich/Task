@@ -24,7 +24,7 @@ function check(){
             }
         }
     }
-    echo 'Неверный логин или пароль';
+    echo json_encode('Неверный логин или пароль');
 }
 
 function logout(){
