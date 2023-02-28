@@ -14,7 +14,7 @@
 <form id="helloform">
     <h1><?php echo 'Hello, ' . $_SESSION['login'] . '!';?></h1>
     <p><input type="button" name="submit" value="Выход" onclick="logout()"></input></p>
-    <script src="../js/Definition.js?ver=1.0.5"></script>
+    <script src="../js/Definition.js?ver=1.0.6"></script>
 </form>
 <? endif ?>
 <?php if(!isset($_SESSION['login'])): ?>
@@ -27,8 +27,8 @@
     <p>Имя <input type="name" name="name" id="name" value=""> <text id="nameSignal" class="alert"></text></p>
     <p hidden>Flag <input type="flag" name="flag" id="flag" value="" onchange="addUser(document.getElementById('login').value, document.getElementById('password').value, document.getElementById('email').value, document.getElementById('name').value, document.getElementById('flag').value)"></p>
     <p><input type="button" name="submit" value="Зарегистрироваться" onclick="verify()"></input]></p>
-    <script src="../js/Verification.js?ver=1.0.5"></script>
-    <script src="../js/Definition.js?ver=1.0.7"></script>
+    <script src="../js/Verification.js?ver=1.0.7"></script>
+    <script src="../js/Definition.js?ver=1.0.8"></script>
 </form>
 <? endif ?>
 </body>

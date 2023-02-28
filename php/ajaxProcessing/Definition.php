@@ -24,7 +24,7 @@ function check(){
             }
         }
     }
-    echo json_encode('Неверный логин или пароль');
+    echo json_encode('Неверный логин или пароль', JSON_UNESCAPED_UNICODE);
 }
 
 function logout(){

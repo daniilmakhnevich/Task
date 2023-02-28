@@ -8,7 +8,7 @@ function check(login, password){
             if(data.length==0){
                 window.location.href = 'Authorization.php';
             }
-            else alert(JSON.parse(data));
+            else alert(data);
         }
     });
 }

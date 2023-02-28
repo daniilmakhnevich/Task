@@ -6,7 +6,7 @@ function checkLogin(login){
         data: {func:'checkLogin', login:login},
         success: function(data){
             try{
-                document.getElementById("loginSignal").innerHTML = JSON.parse(data);
+                document.getElementById("loginSignal").innerHTML = data;
             }
             catch{
                 document.getElementById("loginSignal").innerHTML = '';
@@ -28,7 +28,7 @@ function checkPassword(password){
         data: {func:'checkPassword',password:password},
         success: function(data){
             try{
-                document.getElementById("passwordSignal").innerHTML = JSON.parse(data);
+                document.getElementById("passwordSignal").innerHTML = data;
             }
             catch{
                 document.getElementById("passwordSignal").innerHTML = '';
@@ -50,7 +50,7 @@ function checkConfirm_password(password, confirm_password){
         data: {func:'checkConfirm_password', password:password, confirm_password:confirm_password},
         success: function(data){
             try{
-                document.getElementById("confirm_passwordSignal").innerHTML = JSON.parse(data);
+                document.getElementById("confirm_passwordSignal").innerHTML = data;
             }
             catch{
                 document.getElementById("confirm_passwordSignal").innerHTML = '';
@@ -72,7 +72,7 @@ function checkEmail(email){
         data: {func:'checkEmail', email:email},
         success: function(data){
             try{
-                document.getElementById("emailSignal").innerHTML = JSON.parse(data);
+                document.getElementById("emailSignal").innerHTML = data;
             }
             catch{
                 document.getElementById("emailSignal").innerHTML = '';
@@ -94,7 +94,7 @@ function checkName(name){
         data: {func:'checkName', name:name},
         success: function(data){
             try{
-                document.getElementById("nameSignal").innerHTML = JSON.parse(data);
+                document.getElementById("nameSignal").innerHTML = data;
             }
             catch{
                 document.getElementById("nameSignal").innerHTML = '';
@@ -116,7 +116,7 @@ function addUser(login, password, email, name, flag){
         data: {func:'addUser', login:login, password:password, email:email, name:name, flag:flag},
         success: function(data){
             if(data.length>0){
-                alert(JSON.parse(data));
+                alert(data);
                 window.location.href = 'Authorization.php';
             }
         }
