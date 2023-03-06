@@ -14,7 +14,7 @@ function addUser(){
         array_push($data, $user);
         $json = json_encode($data);
         file_put_contents('../../json/Jsondb.json', $json);
-        echo json_encode('Регистрация прошла успешно', JSON_UNESCAPED_UNICODE);
+        echo json_encode(array('Регистрация прошла успешно'), JSON_UNESCAPED_UNICODE);
     }
 }
 
